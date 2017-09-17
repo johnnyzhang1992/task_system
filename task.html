@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .task-item .ui-list-info {
+            position: relative;
+        }
+        .task-item-description{
+            position: absolute;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+<div class="page-group">
+    <div class="page">
+        <header class="bar bar-nav">
+            <!--<a class="icon icon-me pull-left open-panel"></a>-->
+            <h1 class="title">已领任务</h1>
+        </header>
+        <!-- 工具栏 -->
+        <nav class="bar bar-tab">
+            <a class="tab-item external" href="index.html">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">新任务</span>
+            </a>
+            <a class="tab-item external active" href="task.html">
+                <span class="icon icon-menu"></span>
+                <span class="tab-label">已领任务</span>
+            </a>
+            <a class="tab-item external" href="me.html">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">我的</span>
+            </a>
+        </nav>
+        <!-- 这里是页面内容区 -->
+        <div class="content pull-to-refresh-content" data-ptr-distance="55"  ng-controller="home_Ctrl">
+            <!-- 默认的下拉刷新层 -->
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="content-block">
+                <ul class="task-list ui-list ui-list-one">
+                    <li class="task-item" data-href="task.html?id=1">
+                        <div class="ui-list-thumb">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="ui-list-info">
+                            <ul class="ui-justify-flex ui-whitespace">
+                                <li class="list-info-title">
+                                    <h2>任务标题</h2>
+                                </li>
+                                <li class="list-info-title">
+                                    <button class="ui-btn">上传截图</button>
+                                </li>
+                            </ul>
+                            <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                                领取任务一小时内完成否则无效
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item" data-href="task.html?id=1">
+                        <div class="ui-list-thumb">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="ui-list-info">
+                            <ul class="ui-justify-flex ui-whitespace">
+                                <li class="list-info-title">
+                                    <h2>任务标题</h2>
+                                </li>
+                                <li class="list-info-title">
+                                    <button class="ui-btn">审核不通过</button>
+                                </li>
+                            </ul>
+                            <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                                上传的任务截图不符合要求，未通过审核。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item" data-href="task.html?id=1">
+                        <div class="ui-list-thumb">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="ui-list-info">
+                            <ul class="ui-justify-flex ui-whitespace">
+                                <li class="list-info-title">
+                                    <h2>任务标题</h2>
+                                </li>
+                                <li class="list-info-title">
+                                    <button class="ui-btn">任务过期</button>
+                                </li>
+                            </ul>
+                            <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                                执行任务的时间超过期限，已自动取消
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item" data-href="task.html?id=1">
+                        <div class="ui-list-thumb">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </div>
+                        <div class="ui-list-info">
+                            <ul class="ui-justify-flex ui-whitespace">
+                                <li class="list-info-title">
+                                    <h2>任务标题</h2>
+                                </li>
+                                <li class="list-info-title">
+                                    <button class="ui-btn">审核通过</button>
+                                </li>
+                            </ul>
+                            <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                                任务审核通过，收益将在24小时内处理，请耐心等待
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- 加载提示符 -->
+                <!--<div class="infinite-scroll-preloader">-->
+                    <!--<div class="preloader"></div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/task" defer async="true" charset="utf-8"></script>
+</body>
+</html>

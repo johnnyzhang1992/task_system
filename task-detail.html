@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务详情页</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-app="myApp">
+<div class="page-group">
+    <div class="page">
+        <header class="bar bar-nav">
+            <button class="nav-back button button-link button-nav pull-left">
+                <span class="icon icon-left"></span>
+                返回
+            </button>
+            <h1 class="title">详情</h1>
+        </header>
+        <!-- 这里是页面内容区 -->
+        <div class="content pull-to-refresh-content" data-ptr-distance="55"  ng-controller="home_Ctrl">
+            <!-- 默认的下拉刷新层 -->
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="content-block">
+                <p ng-bind="task.title"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/task-detail" defer async="true" charset="utf-8"></script>
+</body>
+</html>
