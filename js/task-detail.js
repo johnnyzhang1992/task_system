@@ -21,6 +21,9 @@ require(['config'], function (){
             require(['sm'],function () {
                 $.init();
                 console.log('========');
+                $('.nav-back').on('click',function () {
+                    window.history.back();
+                });
                 // 下拉刷新
                 $(document).on('refresh', '.pull-to-refresh-content',function(e) {
                     console.log('------------');

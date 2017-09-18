@@ -34,13 +34,9 @@ require(['config'], function (){
                         console.info('-----refresh--success');
                     }, function errorCallback(response) {
                         // 请求失败执行代码
-                        require(['zepto','frozen'],function ($) {
-                            var dia=$.dialog({
-                                title:'温馨提示',
-                                content:'信息加载失败，请下拉刷新',
-                                button:["好的知道了"]
-                            });
-                        })
+                        require(['sm'],function () {
+                            $.alert('Sorry,加载失败了','请重试或者待会再试');
+                        });
                     });
                     // 加载完毕需要重置
                     $.pullToRefreshDone('.pull-to-refresh-content');

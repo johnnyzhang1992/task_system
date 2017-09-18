@@ -8,21 +8,27 @@ require(['config'], function (){
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $scope.preCount = 2;
             $scope.currentCount = 5;
-            $http({
-                method: 'GET',
-                url: './js/data.json'
-            }).then(function successCallback(response) {
-                // 请求成功执行代码
-                $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
-                $scope.maxCount = response.data.tasks.length;
-                console.log( $scope.maxCount);
+            if(localStorage.getItem('home_data') && JSON.parse(localStorage.getItem('home_data')).length>1){
+                $scope.tasks = JSON.parse(localStorage.getItem('home_data'));
                 $('.ui-loading-block').hide();
-            }, function errorCallback(response) {
-                // 请求失败执行代码
-                require(['sm'],function () {
-                    $.alert('Sorry,加载失败了','请重试或者待会再试');
+            }else{
+                $http({
+                    method: 'GET',
+                    url: './js/data.json'
+                }).then(function successCallback(response) {
+                    // 请求成功执行代码
+                    $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
+                    $scope.maxCount = response.data.tasks.length;
+                    console.log( $scope.maxCount);
+                    localStorage.setItem('home_data',JSON.stringify($scope.tasks));
+                    $('.ui-loading-block').hide();
+                }, function errorCallback(response) {
+                    // 请求失败执行代码
+                    require(['sm'],function () {
+                        $.alert('Sorry,加载失败了','请重试或者待会再试');
+                    });
                 });
-            });
+            }
             require(['sm'],function () {
                 $.init();
                 $('.buttons-tab').fixedTab({offset:44});
@@ -43,6 +49,7 @@ require(['config'], function (){
                                 $scope.tasks = response.data.tasks.slice(0,$scope.currentCount+$scope.preCount);
                                 $scope.currentCount += $scope.preCount;
                                 $scope.maxCount = response.data.tasks.length;
+                                localStorage.setItem('home_data',JSON.stringify($scope.tasks));
                             }, function errorCallback(response) {
                                 // 请求失败执行代码
                                 $.alert('Sorry,加载失败了','请重试或者待会再试');
@@ -52,14 +59,18 @@ require(['config'], function (){
                             if (loading) return;
                             var tabIndex = 0;
                             type = $(this).find('.infinite-scroll.active').attr('id');
-                            if(type == "easy"){
-                                tabIndex = 0;
-                            }
-                            if(type == "normal"){
-                                tabIndex = 1;
-                            }
-                            if(type == 'hard'){
-                                tabIndex = 2;
+                            switch(type){
+                                case 'easy':
+                                    tabIndex = 0;
+                                    break;
+                                case 'normal':
+                                    tabIndex = 1;
+                                    break;
+                                case 'hard':
+                                    tabIndex = 2;
+                                    break;
+                                default:
+                                    tabIndex = 0;
                             }
                             if ($scope.currentCount >= $scope.maxCount) {
                                 $.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));
@@ -74,6 +85,7 @@ require(['config'], function (){
                 });
                 // 下拉刷新
                 $(document).on('refresh', '.pull-to-refresh-content',function(e) {
+                    $('.ui-loading-block').show();
                     $('.pull-to-refresh-layer').show();
                     // type
                     $http({
@@ -83,7 +95,9 @@ require(['config'], function (){
                         // 请求成功执行代码
                         console.log('---refresh ---success');
                         $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
+                        localStorage.setItem('home_data',JSON.stringify($scope.tasks));
                         $('.pull-to-refresh-layer').hide();
+                        $('.ui-loading-block').hide();
                     }, function errorCallback(response) {
                         // 请求失败执行代码
                         $.alert('Sorry,加载失败了','请重试或者待会再试');
