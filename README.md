@@ -1,5 +1,20 @@
 # 前端项目使用说明
 
+## 如何使用
+
+项目使用了gulp和bower
+
+拉取代码后，先执行 
+
+        npm install
+        
+再执行
+
+        bower install
+        
+然后执行
+
+        gulp
 ## assets
 
 ### css
