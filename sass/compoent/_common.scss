@@ -25,7 +25,6 @@ body>a{display: none;}
 .content h3{
   padding: 0 15px;
   line-height: 44px;
-  font-size: 15px;
 }
 .border-list{
   background-color: #fff;
@@ -75,9 +74,9 @@ body>a{display: none;}
   border: 1px solid #ddd;
 }
 .ui-flex{
-  border: 1px solid #ddd;
-  min-height: 80px;
-  margin-bottom: 10px;
+  //border: 1px solid #ddd;
+  //min-height: 80px;
+  //margin-bottom: 10px;
 }
 .ui-flex-ver{
   border: 1px solid #ddd;
@@ -94,7 +93,9 @@ body>a{display: none;}
   background: #777;
 }
 
-
+.page{
+  background: #fff;
+}
 .hide{
   display: none;
 }
@@ -156,6 +157,97 @@ body>a{display: none;}
 .list-block .item-link .item-inner{
   margin-left:0;
 }
-
+// detail page
+.detail {
+    background: #fff;
+  .list-block{
+    margin: 0;
+  }
+  h3.reward{
+    font-size: 1.0rem;
+    padding: 15px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  .detail-top-list{
+    .item-title-row{
+      position: absolute;
+      top:0.75rem;
+    }
+    .item-subtitle{
+      position: absolute;
+      bottom: 0.75rem;
+    }
+  }
+  .detail-middle-list{
+    padding: 20px 15px;
+    border-bottom: 4px solid #ddd;
+  }
+  .detail-desc{
+    overflow: auto;
+    padding-top: 1rem;
+    .list-title{
+      padding: 0 20px;
+      border-left: 8px solid #999;
+    }
+    .list-content{
+      .item-title{
+        white-space: inherit;
+        font-size: 16px;
+      }
+      padding-top: 1rem;
+    }
+  }
+  .notice{
+    color: red;
+    .notice-title{
+      font-size: 16px;
+    }
+    .item-title{
+      font-size: 14px;
+    }
+  }
+  .detail-desc .list-block .item-inner:after,.notice .list-block .item-inner:after{
+    background: #fff;
+  }
+  .task-picture{
+    clear: both;
+    overflow: auto;
+    .media-content{
+      width: 640px;
+      overflow-x: scroll;
+    }
+    .item-media{
+      display: inline-block;
+      float: left;
+      padding-right: 20px;
+    }
+    .item-media:last-child{
+      padding-right: 0;
+    }
+  }
+  .task-apply {
+    height:2rem;
+    a{
+      text-align: center;
+      display: block;
+      width: 100%;
+      background: #00a5e0;
+      line-height: 2rem;
+      color: #fff;
+    }
+  }
+  .task-applyed{
+    background: #fff;
+    height: 2.0rem;
+    li.list-info-title {
+      width: 50%;
+      text-align: center;
+      line-height: 2.0rem;
+    }
+    .li.list-info-title:first-child{
+      border-right: 2px solid #eee;
+    }
+  }
+}
 @import "reset";
 @import "footer";

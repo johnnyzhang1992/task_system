@@ -43,11 +43,11 @@ gulp.task('clean:dist', function (cb) {
 });
 // 监控以及浏览器刷新
 gulp.task('watch', function() {
-    browserSync.init({
-        server: { baseDir: "./" }
-    });
-    gulp.watch(['./sass/**/*.scss','./js/app/*.js'], ['sass','min-js'])
-        .on('change', browserSync.reload);
+    // browserSync.init({
+    //     server: { baseDir: "./" }
+    // });
+    gulp.watch(['./sass/**/*.scss','./js/app/*.js'], ['sass'])
+        // .on('change', browserSync.reload);
 });
 //默认
 gulp.task('default', ['sass','min-js']);
