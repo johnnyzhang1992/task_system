@@ -5,6 +5,8 @@
  */
 require(['config'], function (){
     require(['app','zepto','app/untils'],function (app,$,untils) {
+        // 先判断是否登录
+        // 否，进入登录界面
         // 既要获取任务的详细信息，
         // 也要获取当前用户对此任务的申请状态
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
