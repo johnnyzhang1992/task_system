@@ -10,7 +10,7 @@ require(['config'], function (){
             $scope.pass_message = '两次输入的密码不一致哦！';
             // 获取验证码函数
             $scope.getCaptcha = function () {
-
+                var phone = $('input[name="phone"]').val();//手机号码
             };
             //提交表单信息
             $http({
