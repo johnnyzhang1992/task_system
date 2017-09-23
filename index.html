@@ -19,11 +19,11 @@
             <span class="icon icon-home"></span>
             <span class="tab-label">新任务</span>
         </a>
-        <a class="tab-item external" href="task.html">
+        <a class="tab-item external tab-task" data-href="task.html">
             <span class="icon icon-menu"></span>
             <span class="tab-label">已领任务</span>
         </a>
-        <a class="tab-item external" href="me.html">
+        <a class="tab-item external tab-me" data-href="me.html">
             <span class="icon icon-me"></span>
             <span class="tab-label">我的</span>
         </a>
@@ -49,14 +49,14 @@
                         <ul class="task-list ui-list list-container" ng-repeat="task in tasks">
                             <li class="task-item" data-href="task.html?id={{ task.id}}">
                                 <div class="ui-list-thumb">
-                                    <a href="task-detail.html?id={{task.id}}">
+                                    <a data-href="task-detail.html?id={{task.id}}">
                                         <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
                                     </a>
                                 </div>
                                 <div class="ui-list-info">
                                     <ul class="ui-justify-flex ui-whitespace">
                                         <li class="list-info-title">
-                                            <h2 ng-bind="task.title"></h2>
+                                            <a data-href="task-detail.html?id={{task.id}}" ng-bind="task.title" style="display: block"></a>
                                             <button class="ui-btn">投资</button>
                                             <button class="ui-btn">注册</button>
                                         </li>
@@ -80,53 +80,13 @@
                 <div id="normal" class="tab">
                     <!--中难度-->
                     <div class="content-block">
-                        <ul class="task-list ui-list list-container" ng-repeat="task in tasks">
-                            <li class="task-item" data-href="task-detail.html?id={{ task.id}}">
-                                <div class="ui-list-thumb">
-                                    <a href="task-detail.html?id={{task.id}}">
-                                        <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
-                                    </a>
-                                </div>
-                                <div class="ui-list-info">
-                                    <ul class="ui-justify-flex ui-whitespace">
-                                        <li class="list-info-title">
-                                            <h2 ng-bind="task.title"></h2>
-                                            <button class="ui-btn">注册有奖</button>
-                                        </li>
-                                        <li class="list-info-title">
-                                            <button class="ui-btn">做任务 +3.00元</button>
-                                        </li>
-                                    </ul>
-                                    <div class="task-item-description  ui-nowrap-multi ui-whitespace" ng-bind="task.desc"></div>
-                                </div>
-                            </li>
-                        </ul>
+                       <p>中难度的任务</p>
                     </div>
                 </div>
                 <div id="hard" class="tab infinite-scroll">
                     <!--高难度-->
                     <div class="content-block">
-                        <ul class="task-list ui-list list-container" ng-repeat="task in tasks">
-                            <li class="task-item" data-href="task.html?id={{ task.id}}">
-                                <div class="ui-list-thumb">
-                                    <a href="task-detail.html?id={{task.id}}">
-                                        <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
-                                    </a>
-                                </div>
-                                <div class="ui-list-info">
-                                    <ul class="ui-justify-flex ui-whitespace">
-                                        <li class="list-info-title">
-                                            <h2 ng-bind="task.title"></h2>
-                                            <button class="ui-btn">注册有奖</button>
-                                        </li>
-                                        <li class="list-info-title">
-                                            <button class="ui-btn">做任务 +3.00元</button>
-                                        </li>
-                                    </ul>
-                                    <div class="task-item-description  ui-nowrap-multi ui-whitespace" ng-bind="task.desc"></div>
-                                </div>
-                            </li>
-                        </ul>
+                        <p>高难度的任务</p>
                     </div>
                 </div>
             </div>

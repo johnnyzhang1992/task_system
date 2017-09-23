@@ -16,8 +16,18 @@ define(['zepto'],function ($) {
         var date = unixTimestamp.getDate();
         return [year,month,date].join('-');
     };
+    var checkLogin = function (url) {
+        localStorage.setItem('before-login-url',url);
+        if(localStorage.getItem('user') && localStorage.getItem('user').id>0){
+            window.location.href= url;
+        }else{
+            window.location.href='login.html';
+            return false;
+        }
+    };
     return {
         GetUrlParam:GetQueryString,
-        FormatTime:formatTime
+        FormatTime:formatTime,
+        checkLogin:checkLogin
     };
 });

@@ -4,7 +4,7 @@
  * CreateTime 2017/9/12.
  */
 require(['config'], function (){
-    require(['app','zepto'],function (app,$) {
+    require(['app','zepto','app/untils'],function (app,$,untils) {
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $scope.preCount = 2;
             $scope.currentCount = 5;
@@ -31,6 +31,18 @@ require(['config'], function (){
             }
             require(['sm'],function () {
                 $.init();
+                // 对跳转链接添加点击事件
+                $('.task-item a').on('click',function () {
+                    // 此处判断是否登录
+                    untils.checkLogin($(this).attr('data-href'));
+                });
+                $('.bar-tab .tab-task').on('click',function () {
+                    untils.checkLogin('task.html');
+                });
+                $('.bar-tab .tab-me').on('click',function () {
+                    untils.checkLogin('me.html');
+                });
+
                 $('.buttons-tab').fixedTab({offset:44});
                 // 无限滚动
                 $(function() {

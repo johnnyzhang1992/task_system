@@ -5,6 +5,10 @@
  */
 require(['config'], function (){
     require(['app','zepto'],function (app,$) {
+        window.onload = function () {
+            // 此处判断是否登录
+            untils.checkLogin(window.location.href);
+        };
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $http({
                 method: 'GET',
