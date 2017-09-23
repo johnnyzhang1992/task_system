@@ -66,7 +66,7 @@
         }
     </style>
 </head>
-<body ng-app="myApp" ng-controller="home_Ctrl">
+<body ng-app="myApp" ng-controller="register_Ctrl">
 <div class="page page-current">
     <header class="bar bar-nav">
         <h1 class="title">注册</h1>
@@ -77,28 +77,31 @@
             <a class="pull-right register-link" href="login.html">登录</a>
         </div>
         <div class="content-block ui-form">
-            <form action="/register.java">
+            <form action="/register.java" name="registerForm" novalidate>
                 <div class="row">
                     <div class="ui-form-item ui-form-item-pure">
-                        <input type="text" name="phone" placeholder="手机号">
+                        <input type="number" name="phone" ng-model="phone" placeholder="手机号">
                     </div>
                 </div>
                 <div class="row captcha-row">
                     <div class="col-50 ui-form-item">
-                        <input class="input-captcha" type="text" name="captcha" placeholder="验证码">
+                        <input class="input-captcha" type="number" name="captcha" ng-model="captcha" placeholder="验证码">
                     </div>
                     <div class="col-50 ui-form-item">
-                        <input class="get-captcha" type="button" name="geCaptcha" value="验证码">
+                        <input class="get-captcha" type="button" name="geCaptcha" ng-click="getCaptcha" value="验证码">
                     </div>
                 </div>
                 <div class="row">
                     <div class="ui-form-item ui-form-item-pure">
-                        <input type="password" name="password" placeholder="设置密码">
+                        <input type="password" name="password" ng-model="password" placeholder="设置密码">
                     </div>
                 </div>
                 <div class="row">
                     <div class="ui-form-item ui-form-item-pure">
-                        <input type="password" name="password1" placeholder="再次确认密码">
+                        <input type="password" name="password1" ng-model="password1" placeholder="再次确认密码">
+                    </div>
+                    <div class="pass_check ui-form-item" style="display: none">
+                        <p style="color:red" ng-bind="pass_message"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -110,6 +113,6 @@
         </div>
     </div>
 </div>
-<script src="js/lib/requirejs/require.min.js" data-main="js/login" defer async="true" charset="utf-8"></script>
+<script src="js/lib/requirejs/require.min.js" data-main="js/register" defer async="true" charset="utf-8"></script>
 </body>
 </html>

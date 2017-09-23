@@ -5,8 +5,14 @@
  */
 require(['config'], function (){
     require(['app','zepto'],function (app,$) {
-        app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+        app.controller('register_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             // 注册
+            $scope.pass_message = '两次输入的密码不一致哦！';
+            // 获取验证码函数
+            $scope.getCaptcha = function () {
+
+            };
+            //提交表单信息
             $http({
                 method: 'GET',
                 url: './js/data.json'
@@ -24,6 +30,22 @@ require(['config'], function (){
                 $.init();
                 $('.nav-back').on('click',function () {
                     window.history.back();
+                });
+                $('input').change(function () {
+                   if($(this).val().length>0){
+                       $(this).css({"background-color":"#fff","border": "1px solid #e0e0e0"});
+                       var p = $('input[name="password"]').val(),p1 = $('input[name="password1"]').val();
+                       console.log(p,p1);
+                       if(p != p1){
+                           console.log('---no---');
+                           $('.pass_check').show();
+                       }else{
+                           console.log('---yes---');
+                           $('.pass_check').hide();
+                       }
+                   }else{
+                       $(this).css({"background-color":"#e0e0e0"});
+                   }
                 });
             });
             require(['zepto','frozen'],function ($) {
