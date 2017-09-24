@@ -9,7 +9,7 @@ require(['config'], function (){
             // 登录
             $http({
                 method: 'GET',
-                url: './js/data.json'
+                url: './js/json/data.json'
             }).then(function successCallback(response) {
                 // 请求成功执行代码
                 $scope.tasks = response.data.tasks;

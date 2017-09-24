@@ -8,7 +8,7 @@ require(['config'], function (){
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $http({
                 method: 'GET',
-                url: './js/data.json'
+                url: './js/json/data.json'
             }).then(function successCallback(response) {
                 // 请求成功执行代码
                 $scope.tasks = response.data.tasks;
@@ -30,7 +30,7 @@ require(['config'], function (){
                     console.log('------------');
                     $http({
                         method: 'GET',
-                        url: './js/data.json'
+                        url: './js/json/data.json'
                     }).then(function successCallback(response) {
                         // 请求成功执行代码
                         $scope.tasks = response.data.tasks;

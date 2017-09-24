@@ -80,16 +80,24 @@
                         </div>
                     </div>
                 </div>
-                <div id="normal" class="tab">
+                <div id="normal" class="tab  infinite-scroll">
                     <!--中难度-->
                     <div class="content-block">
                        <p>中难度的任务</p>
+                    </div>
+                    <!-- 加载提示符 -->
+                    <div ng-show="maxCount >4" class="infinite-scroll-preloader">
+                        <div class="preloader"></div>
                     </div>
                 </div>
                 <div id="hard" class="tab infinite-scroll">
                     <!--高难度-->
                     <div class="content-block">
                         <p>高难度的任务</p>
+                    </div>
+                    <!-- 加载提示符 -->
+                    <div ng-show="maxCount >4" class="infinite-scroll-preloader">
+                        <div class="preloader"></div>
                     </div>
                 </div>
             </div>

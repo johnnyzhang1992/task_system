@@ -14,7 +14,7 @@ require(['config'], function (){
             }else{
                 $http({
                     method: 'GET',
-                    url: './js/data.json'
+                    url: './js/json/data.json'
                 }).then(function successCallback(response) {
                     // 请求成功执行代码
                     $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
@@ -46,14 +46,15 @@ require(['config'], function (){
                 $('.buttons-tab').fixedTab({offset:44});
                 // 无限滚动
                 $(function() {
+                    var loading = false;
                     $(document).on("pageInit",  function(e, id, page) {
-                        var loading = false;
                         var type = null;
                         function addItems(type) {
+                            loading = false;
                             // type 加载的任务类型
                             $http({
                                 method: 'GET',
-                                url: './js/data.json'
+                                url: './js/json/data.json'
                                 // url: './js/data.json？type='+type
                                 // 获取不同类型（easy,n）
                             }).then(function successCallback(response) {
@@ -62,6 +63,9 @@ require(['config'], function (){
                                 $scope.currentCount += $scope.preCount;
                                 $scope.maxCount = response.data.tasks.length;
                                 localStorage.setItem('home_data',JSON.stringify($scope.tasks));
+                                if ($scope.currentCount >= $scope.maxCount) {
+                                    $('.infinite-scroll-preloader').eq(tabIndex).hide();
+                                }
                             }, function errorCallback(response) {
                                 // 请求失败执行代码
                                 $.alert('Sorry,加载失败了','请重试或者待会再试');
@@ -69,6 +73,7 @@ require(['config'], function (){
                         }
                         $(page).on('infinite', function() {
                             if (loading) return;
+                            loading = true;
                             var tabIndex = 0;
                             type = $(this).find('.infinite-scroll.active').attr('id');
                             switch(type){
@@ -102,7 +107,7 @@ require(['config'], function (){
                     // type
                     $http({
                         method: 'GET',
-                        url: './js/data.json'
+                        url: './js/json/data.json'
                     }).then(function successCallback(response) {
                         // 请求成功执行代码
                         console.log('---refresh ---success');
