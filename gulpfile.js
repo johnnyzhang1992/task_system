@@ -14,14 +14,14 @@ var autoprefixer = require('gulp-autoprefixer');//添加css浏览器前缀
 var browserSync = require('browser-sync');//浏览器刷新
 
 gulp.task('sass', function () {
-    return gulp.src('./sass/**/*.scss')
-        // .pipe(sourcemaps.init())
+    return gulp.src('./sass/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(gulp.dest('./css'))
-        .pipe(minifyCss()) //压缩css
-        .pipe(rename({suffix: '.min'}))//添加min后缀
-        // .pipe(sourcemaps.write('./'))
+        // .pipe(gulp.dest('./css'))
+        // .pipe(minifyCss()) //压缩css
+        // .pipe(rename({suffix: '.min'}))//添加min后缀
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./css'));
 });
 gulp.task('min-js', function () {

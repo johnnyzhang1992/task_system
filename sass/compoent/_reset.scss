@@ -1,4 +1,19 @@
-.ui-header{
+.bar{
   background-color: #fff;
-  color: #333;
+}
+.buttons-tab{
+  .button.active{
+    color: #0022ff;
+    border-color: #0022ff;
+  }
+  .button{
+    color: #1d1d1d;
+  }
+}
+.buttons-tab:after{
+  background-color: #fff;
+}
+.ui-btn{
+  background-color: #fff;
+  background-image: none;
 }
