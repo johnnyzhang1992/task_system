@@ -6,7 +6,7 @@
 }
 .task-item {
   .list-info-title {
-    a {
+    a,h2 {
       font-size: 1rem;
       color: #1d1d1d;
       margin-bottom: 0.5rem;
@@ -29,9 +29,10 @@
   }
   .right-btn {
     .ui-btn{
-      height:2rem;
+      height:1.5rem;
       color: #ff9900;
-      padding: 5px 10px;
+      padding: 5px 15px;
+      margin-top: 0.5rem;
       background-color: #fff;
     }
     .ui-btn:before{
