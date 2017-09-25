@@ -49,6 +49,7 @@ require(['config'], function (){
                     var loading = false;
                     $(document).on("pageInit",  function(e, id, page) {
                         var type = null;
+                        var tabIndex = 0;
                         function addItems(type) {
                             loading = false;
                             // type 加载的任务类型
@@ -74,7 +75,6 @@ require(['config'], function (){
                         $(page).on('infinite', function() {
                             if (loading) return;
                             loading = true;
-                            var tabIndex = 0;
                             type = $(this).find('.infinite-scroll.active').attr('id');
                             switch(type){
                                 case 'easy':
