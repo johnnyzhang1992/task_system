@@ -188,6 +188,12 @@ body>a{display: none;}
     }
   }
 }
+.blank-block{
+  background-color: #f5f5f5;
+}
+.blank-block.h1{
+  min-height: 1rem;
+}
 @import "reset";
 @import "header";
 @import "footer";
