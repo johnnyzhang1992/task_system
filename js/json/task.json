@@ -56,5 +56,14 @@
       "more_infos": "",
       "status": "apply"
     }
+  ],
+  "status":[ {
+    "active": "正常的",
+    "apply" :"申请状态",
+    "checkNo":"审核不通过",
+    "checked":"审核通过",
+    "finish":"已结算",
+    "timeOut":"任务超时"
+  }
   ]
 }
